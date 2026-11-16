@@ -23,6 +23,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-005: Model komputer 3D rotasi & zoom | PR #7 (merged) | Model meja, monitor, casing tower, tombol power, LED, kabel daya, keyboard, mouse; kontrol OrbitControls (rotasi & zoom) |
 | 2026-11-16 | T-006: Klik komponen, sorotan & panel info | PR #8 (merged) | Data PCComponent di src/data/components.js, raycasting klik, highlight kilau aksen biru, kartu info di side panel, dan unit test validasi data |
 | 2026-11-16 | T-007: Data prosedur & tahapan simulasi | PR #9 (merged) | 10 tahapan dalam 5 fase lengkap di src/data/steps.js; 6 unit tests validasi data kelengkapan alur di tests/steps.test.js lulus |
+| 2026-11-16 | T-008: Logika state simulasi murni | - | Modul src/logic/simulation-state.js tanpa DOM/Three.js, implementasi K2 (aksi salah tidak memajukan tahap) & K4 (memori sesi murni), 7 unit tests di tests/simulation-state.test.js lulus |
 
 ## In Progress
 
@@ -52,3 +53,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-005 model komputer 3D | Model komputer dari geometri Three.js (monitor, casing, tombol power, kabel, keyboard, mouse), OrbitControls | lanjut T-006 klik komponen & panel info
 2026-11-16 | agen AI | T-006 klik komponen & panel info | Data PCComponent, raycasting klik & highlight mesh Three.js, kartu info komponen di DOM UI, unit tests validasi data lulus | lanjut T-007 data tahapan simulasi
 2026-11-16 | agen AI | T-007 data tahapan simulasi | Data prosedur dan 10 SimulationStep dalam 5 fase (pemeriksaan, power on, booting, OS, shutdown), 6 tes validasi rantai nextStepId & interactionTarget | lanjut T-008 logika state simulasi murni
+2026-11-16 | agen AI | T-008 logika state simulasi | createSimulationManager (state idle/running/completed, K2 aksi salah tahan tahap, K4 simpan di memori), 7 unit tests lulus | lanjut T-009 UI simulasi (mulai, lanjut, ulang, penanda selesai)
