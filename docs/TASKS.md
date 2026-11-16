@@ -38,7 +38,7 @@ Tenggat aktual lebih pendek dari satu minggu penuh; perkiraan di atas adalah usu
 | T-013 | Peringatan kesalahan prosedur dengan arahan perbaikan | F5 | M | done | feat/T-013-peringatan | T-008, T-010 | Tindakan salah menampilkan banner dari warningMessage dan correction tahap aktif; tahap tetap sama sampai tindakan benar |
 | T-014 | Data dan logika kuis beserta tes | F6 | S | done | feat/T-014-logika-kuis | T-008 | `QuizQuestion` terisi; tes memastikan skor dihitung benar dan tidak ada penyimpanan di peramban; `npm test` lulus |
 | T-015 | UI kuis dan skor akhir | F6 | M | done | feat/T-015-ui-kuis | T-009, T-014 | Kuis tampil satu per satu setelah simulasi selesai; skor akhir, jawaban benar, dan penjelasan tampil; skor hilang setelah muat ulang |
-| T-016 | Pembekuan fitur dan pemeriksaan akhir URL Vercel | R2 | S | review | chore/T-016-pembekuan | T-011 | Mulai Senin 16 November 2026 pukul 20.00 WIB hanya perbaikan bug; `npm run lint`, `npm test`, `npm run build` lulus; uji manual 1280, 768, 375 px; URL terbuka normal |
+| T-016 | Pembekuan fitur dan pemeriksaan akhir URL Vercel | R2 | S | done | chore/T-016-pembekuan | T-011 | Mulai Senin 16 November 2026 pukul 20.00 WIB hanya perbaikan bug; `npm run lint`, `npm test`, `npm run build` lulus; uji manual 1280, 768, 375 px; URL terbuka normal |
 | T-017 | Perapihan dokumentasi akhir: README, PROGRESS, LESSONS, REVIEW | dokumen | S | todo | docs/T-017-dokumen-akhir | T-016 | README memuat URL Vercel dan cara menjalankan; LESSONS memuat minimal satu pelajaran; REVIEW terisi |
 
 ### Langkah T-001 (setup)

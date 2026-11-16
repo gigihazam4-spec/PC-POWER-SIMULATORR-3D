@@ -31,7 +31,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-013: Peringatan kesalahan prosedur & arahan perbaikan (F5) | PR #16 (merged) | Banner peringatan khusus (src/ui/warning-banner.js & src/styles/warning.css), menampilkan warningMessage & correction sesuai tahap aktif, 3 unit tests baru di tests/procedure-warning.test.js lulus |
 | 2026-11-16 | T-014: Data dan logika kuis (F6) | PR #17 (merged) | Data QuizQuestion di src/data/quiz.js, createQuizManager di src/logic/quiz-state.js murni di memori (K4), 3 unit tests di tests/quiz.test.js lulus |
 | 2026-11-16 | T-015: UI kuis pemahaman dan skor akhir (F6) | PR #18 (merged) | Komponen UI kuis interaktif (src/ui/quiz-ui.js & src/styles/quiz.css), feedback jawaban langsung & penjelasan edukatif, skor persentase akhir & reset kuis (K4) |
-| 2026-11-16 | T-016: Pembekuan fitur & pemeriksaan akhir (R2) | PR #19 (in review) | Pembekuan fitur (freeze), lint lulus, 27 unit tests lulus, build produksi sukses (148 kB gzip), verifikasi URL Vercel https://pc-power-simulatorr-3-d.vercel.app/ 200 OK |
+| 2026-11-16 | T-016: Pembekuan fitur & pemeriksaan akhir (R2) | PR #19 (merged) | Pembekuan fitur (freeze), lint lulus, 27 unit tests lulus, build produksi sukses (148 kB gzip), verifikasi URL Vercel https://pc-power-simulatorr-3-d.vercel.app/ 200 OK |
 
 ## In Progress
 
