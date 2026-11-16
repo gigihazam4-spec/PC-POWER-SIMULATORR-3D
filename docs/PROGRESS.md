@@ -22,6 +22,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-004: Deploy dini ke Vercel | PR #6 (merged) | vercel.json ditambahkan untuk auto-build dan konfigurasi output dist di Vercel |
 | 2026-11-16 | T-005: Model komputer 3D rotasi & zoom | PR #7 (merged) | Model meja, monitor, casing tower, tombol power, LED, kabel daya, keyboard, mouse; kontrol OrbitControls (rotasi & zoom) |
 | 2026-11-16 | T-006: Klik komponen, sorotan & panel info | PR #8 (merged) | Data PCComponent di src/data/components.js, raycasting klik, highlight kilau aksen biru, kartu info di side panel, dan unit test validasi data |
+| 2026-11-16 | T-007: Data prosedur & tahapan simulasi | - | 10 tahapan dalam 5 fase lengkap di src/data/steps.js; 6 unit tests validasi data kelengkapan alur di tests/steps.test.js lulus |
 
 ## In Progress
 
@@ -50,3 +51,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-004 deploy dini ke Vercel | Tambahkan konfigurasi vercel.json, verifikasi build/lint/test, buka dan merge PR #6 | hubungkan repositori ke Vercel dashboard untuk mengambil URL produksi aktual
 2026-11-16 | agen AI | T-005 model komputer 3D | Model komputer dari geometri Three.js (monitor, casing, tombol power, kabel, keyboard, mouse), OrbitControls | lanjut T-006 klik komponen & panel info
 2026-11-16 | agen AI | T-006 klik komponen & panel info | Data PCComponent, raycasting klik & highlight mesh Three.js, kartu info komponen di DOM UI, unit tests validasi data lulus | lanjut T-007 data tahapan simulasi
+2026-11-16 | agen AI | T-007 data tahapan simulasi | Data prosedur dan 10 SimulationStep dalam 5 fase (pemeriksaan, power on, booting, OS, shutdown), 6 tes validasi rantai nextStepId & interactionTarget | lanjut T-008 logika state simulasi murni
