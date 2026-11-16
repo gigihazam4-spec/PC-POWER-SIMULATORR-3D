@@ -1,0 +1,42 @@
+/* ============================================================
+   components.css — Gaya untuk kartu dan info komponen
+   T-006 · F1
+   ============================================================ */
+
+.component-info-card {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface-2);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--easing);
+}
+
+.component-info-card__title {
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary-hover);
+  margin-bottom: var(--space-2);
+}
+
+.component-info-card__desc {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.component-info-card__func-label {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.component-info-card__func {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
