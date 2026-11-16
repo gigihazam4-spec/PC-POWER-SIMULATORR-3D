@@ -1,0 +1,121 @@
+/* ============================================================
+   simulation.css — Gaya untuk kontrol simulasi, progress bar,
+   dan kartu penanda selesai (T-009 · F2)
+   ============================================================ */
+
+/* ---- Container Kontrol Simulasi ---- */
+.sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---- Progress Section ---- */
+.sim-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sim-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.sim-progress__phase {
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary-hover);
+  text-transform: capitalize;
+}
+
+.sim-progress__bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.sim-progress__bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  transition: width var(--duration-normal) var(--easing);
+}
+
+/* ---- Tombol Kontrol ---- */
+.sim-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  transition: background-color var(--duration-fast) var(--easing),
+              border-color var(--duration-fast) var(--easing);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---- Kartu Penanda Selesai ---- */
+.sim-completion-card {
+  padding: var(--space-4);
+  background: var(--color-surface-2);
+  border-left: 4px solid var(--color-success);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sim-completion-card__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-bold);
+  color: var(--color-success);
+}
+
+.sim-completion-card__desc {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
