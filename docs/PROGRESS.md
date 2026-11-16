@@ -17,7 +17,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 |---|---|---|---|
 | - | Dokumen proyek dihasilkan | - | Paket dokumen awal dari SPEC.json |
 | 2026-11-16 | T-001: Setup proyek | - | Vite vanilla, ESLint, node --test, struktur folder (src/data, src/logic, src/scene, src/ui, src/styles), ci.yml; three@0.187.0, vite@8.3.8, eslint@10.15.0 |
-| 2026-11-16 | T-002: Token CSS dan layout responsif | - | Token warna, tipografi, spacing dari DESIGN_SYSTEM; layout 2-kolom responsif (canvas+panel); lint/test/build lulus |
+| 2026-11-16 | T-002: Token CSS dan layout responsif | PR #4 (merged) | Token warna, tipografi, spacing dari DESIGN_SYSTEM; layout 2-kolom responsif (canvas+panel); lint/test/build lulus |
 
 ## In Progress
 
