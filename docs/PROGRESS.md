@@ -19,6 +19,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-001: Setup proyek | - | Vite vanilla, ESLint, node --test, struktur folder (src/data, src/logic, src/scene, src/ui, src/styles), ci.yml; three@0.187.0, vite@8.3.8, eslint@10.15.0 |
 | 2026-11-16 | T-002: Token CSS dan layout responsif | PR #4 (merged) | Token warna, tipografi, spacing dari DESIGN_SYSTEM; layout 2-kolom responsif (canvas+panel); lint/test/build lulus |
 | 2026-11-16 | T-003: Scene Three.js minimal | PR #5 (merged) | Satu kubus geometri bawaan Three.js, pencahayaan, loop render animasi, dan ResizeObserver responsif |
+| 2026-11-16 | T-004: Deploy dini ke Vercel | PR #6 (merged) | vercel.json ditambahkan untuk auto-build dan konfigurasi output dist di Vercel |
 
 ## In Progress
 
@@ -44,3 +45,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-001 setup proyek | Hapus boilerplate Vite, buat folder src/{data,logic,scene,ui,styles}, perbarui main.js dan style.css, lint/test/build lulus, versi dicatat | lanjut T-002 dan T-003; tenggat 23.00 WIB
 2026-11-16 | agen AI | T-002 layout responsif | Token CSS (warna, tipografi, spacing), reset, layout 2-kolom responsif, placeholder canvas, side panel | lanjut T-003
 2026-11-16 | agen AI | T-003 scene Three.js minimal | Scene Three.js dengan geometri kubus bawaan, pencahayaan, render loop, ResizeObserver responsif | lanjut T-004 deploy dini ke Vercel
+2026-11-16 | agen AI | T-004 deploy dini ke Vercel | Tambahkan konfigurasi vercel.json, verifikasi build/lint/test, buka dan merge PR #6 | hubungkan repositori ke Vercel dashboard untuk mengambil URL produksi aktual
