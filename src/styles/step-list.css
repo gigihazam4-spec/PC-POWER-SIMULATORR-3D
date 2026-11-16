@@ -119,11 +119,29 @@
   font-weight: var(--weight-semibold);
 }
 
+.instruction-card__desc-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-1);
+}
+
+.instruction-card__desc-label {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary-hover);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .instruction-card__desc {
   font-size: var(--text-caption);
   line-height: var(--leading-caption);
-  color: var(--color-text-muted);
-  font-style: italic;
+  color: var(--color-text);
 }
 
 /* ---- Daftar Tahapan (Step List Section) ---- */
