@@ -24,7 +24,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-006: Klik komponen, sorotan & panel info | PR #8 (merged) | Data PCComponent di src/data/components.js, raycasting klik, highlight kilau aksen biru, kartu info di side panel, dan unit test validasi data |
 | 2026-11-16 | T-007: Data prosedur & tahapan simulasi | PR #9 (merged) | 10 tahapan dalam 5 fase lengkap di src/data/steps.js; 6 unit tests validasi data kelengkapan alur di tests/steps.test.js lulus |
 | 2026-11-16 | T-008: Logika state simulasi murni | PR #10 (merged) | Modul src/logic/simulation-state.js tanpa DOM/Three.js, implementasi K2 (aksi salah tidak memajukan tahap) & K4 (memori sesi murni), 7 unit tests di tests/simulation-state.test.js lulus |
-| 2026-11-16 | T-009: UI simulasi & kontrol progres | - | Komponen src/ui/simulation-controls.js, tombol mulai & ulang, bilah progres & penanda selesai, integrasi klik komponen maju langkah |
+| 2026-11-16 | T-009: UI simulasi & kontrol progres | PR #12 (merged) | Komponen src/ui/simulation-controls.js, tombol mulai & ulang, bilah progres & penanda selesai, integrasi klik komponen maju langkah |
 
 ## In Progress
 
