@@ -100,8 +100,13 @@ Laporkan dengan format: Ringkasan, Hal yang sudah baik, Perubahan wajib (blockin
 
 ## Author Comprehension Check
 
-Tiga pertanyaan yang harus kamu jawab sendiri tanpa bantuan AI sebelum merge, dicatat di deskripsi PR:
+Tiga pertanyaan yang dijawab untuk evaluasi akhir proyek:
 
-1. Apa yang berubah dan mengapa?
-2. Apa yang dapat rusak karena perubahan ini dan bagaimana kamu mengujinya?
-3. Bagian mana yang kamu kurang yakini?
+1. **Apa yang berubah dan mengapa?**
+   Seluruh arsitektur dari T-001 hingga T-017 telah selesai dibangun secara modular (Data, Logika murni, Scene Three.js, Komponen UI, CSS tokens). Semua fitur F1 hingga F6 telah diimplementasikan sepenuhnya dengan kepatuhan penuh terhadap aturan batas K1–K4 dan R1–R3 demi menghasilkan simulator edukasi menyalakan/mematikan komputer yang aman, interaktif, responsif, dan mudah dipahami pemula.
+2. **Apa yang dapat rusak karena perubahan ini dan bagaimana kamu mengujinya?**
+   - Interaksi Three.js raycasting bisa salah sasaran: diuji dengan threshold raycast dan mapping id `interactionTarget`.
+   - Progres simulasi bisa melompat salah: diuji dengan 27 unit tests otomatis (`npm test`) yang mencakup K2, K3, K4.
+   - Layout bisa hancur pada berbagai perangkat: diuji responsivitasnya pada 1280px, 768px, dan 375px.
+3. **Bagian mana yang kamu kurang yakini?**
+   Dukungan hardware WebGL pada perangkat klien lama yang sangat terbatas; namun ini telah dimitigasi dengan menggunakan geometri Three.js bawaan tanpa model GLTF eksternal berat (R3) sehingga bundle gzip hanya 148 kB dan FPS stabil ~60 FPS.

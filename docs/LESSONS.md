@@ -13,11 +13,9 @@ Kesalahan berulang dan pelajaran dari proyek ini. **Dibaca agen di awal setiap s
 
 | Tanggal | Kesalahan atau gejala | Akar masalah | Aturan baru | Diterapkan di |
 |---|---|---|---|---|
-| Awal (belum terjadi di proyek ini) | Alat AI menyarankan nama paket atau jalur impor Three.js yang tidak ada atau sudah berubah | Pengetahuan model bisa usang atau keliru | Verifikasi nama paket dengan `npm view <paket>` dan jalur impor di dokumentasi resmi sebelum menyalin | `docs/CODE_STYLE.md` (Dependencies), `docs/GUARDRAILS.md` |
-| Awal (belum terjadi di proyek ini) | Tes diubah atau dilewati agar `npm test` lulus | Tekanan menyelesaikan cepat menjelang tenggat | Tes tidak boleh dilemahkan; perbaiki penyebabnya | `docs/EVALS.md` (Regression Policy), `docs/GUARDRAILS.md` |
-| Awal (belum terjadi di proyek ini) | Beberapa task dikerjakan sekaligus dalam satu jawaban chat | Permintaan terlalu besar | Satu task (T-nnn) per percakapan | `docs/WORKFLOW.md`, `docs/GUARDRAILS.md` |
-| Awal (belum terjadi di proyek ini) | Teks data ditulis dengan `innerHTML` atau progres disimpan di `localStorage` | Kebiasaan umum di contoh kode | Pakai `textContent`; progres hanya di memori sesi | `docs/CODE_STYLE.md` (Forbidden Patterns), `docs/SECURITY.md` |
-| Awal (belum terjadi di proyek ini) | Model 3D eksternal atau dependensi berat ditambahkan sehingga bundel dan beban render membengkak | Ingin tampilan lebih detail terlalu cepat | Model awal dari geometri bawaan (R3); dependensi besar perlu persetujuan | `docs/GUARDRAILS.md` (Ask Before), `docs/EVALS.md` (Ukuran bundel) |
+| 2026-11-16 | Canvas 3D dan side panel tidak tampil di Vercel (tinggi 0px) | CSS height chain terputus karena `#app` dan `.app-shell` belum memiliki `height: 100%` | Selalu pastikan elemen root dan shell aplikasi SPA/Canvas memiliki ketinggian eksplisit 100% | `src/styles/layout.css` |
+| 2026-11-16 | Memilih tahapan dari daftar berisiko mengubah langkah aktif | Salah menghubungkan event handler daftar tahapan dengan dispatcher state utama | Patuhi aturan K3 secara ketat: seleksi daftar hanya mengubah tampilan pratinjau info tanpa memanggil handler aksi atau memajukan indeks tahap | `src/ui/step-list.js`, `tests/step-list.test.js` |
+| 2026-11-16 | Pengujian Node test runner gagal karena `localStorage` terdeteksi | Node v22+ memiliki built-in localStorage eksperimental pada globalThis | Jangan melakukan asersi `typeof localStorage === 'undefined'`, cukup uji bahwa modul logika tidak memanggil atau bergantung pada penyimpanan peramban | `tests/quiz.test.js`, `src/logic/` |
 
 ## Patterns to Watch
 
