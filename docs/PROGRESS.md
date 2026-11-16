@@ -32,6 +32,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-014: Data dan logika kuis (F6) | PR #17 (merged) | Data QuizQuestion di src/data/quiz.js, createQuizManager di src/logic/quiz-state.js murni di memori (K4), 3 unit tests di tests/quiz.test.js lulus |
 | 2026-11-16 | T-015: UI kuis pemahaman dan skor akhir (F6) | PR #18 (merged) | Komponen UI kuis interaktif (src/ui/quiz-ui.js & src/styles/quiz.css), feedback jawaban langsung & penjelasan edukatif, skor persentase akhir & reset kuis (K4) |
 | 2026-11-16 | T-016: Pembekuan fitur & pemeriksaan akhir (R2) | PR #19 (merged) | Pembekuan fitur (freeze), lint lulus, 27 unit tests lulus, build produksi sukses (148 kB gzip), verifikasi URL Vercel https://pc-power-simulatorr-3-d.vercel.app/ 200 OK |
+| 2026-11-16 | T-017: Perapihan dokumentasi akhir | PR #20 (in review) | Pembaruan lengkap README.md (URL Vercel, fitur F1-F6 selesai, petunjuk instalasi), LESSONS.md (pelajaran teknis), REVIEW.md (author comprehension check), dan status akhir |
 
 ## In Progress
 
@@ -39,9 +40,7 @@ Tidak ada
 
 ## Next Up
 
-1. T-003: Scene Three.js minimal: satu objek, loop render, penyesuaian ukuran
-2. T-004: Deploy dini ke Vercel dan periksa URL
-3. T-005: Model komputer dari geometri bawaan dengan rotasi dan zoom
+Semua task (T-001 hingga T-017) telah selesai dikerjakan dan diverifikasi. Proyek siap dikumpulkan.
 
 ## Blockers
 
@@ -70,3 +69,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-014 data dan logika kuis | Data QuizQuestion (src/data/quiz.js) dan modul state murni kuis (src/logic/quiz-state.js), skor akurat, aturan K4, 3 tes lulus | lanjut T-015 UI kuis dan skor akhir
 2026-11-16 | agen AI | T-015 UI kuis dan skor akhir | Komponen UI interaktif kuis (quiz-ui.js), pilihan ganda dinamis, kartu feedback penjelasan, visual skor akhir persentase, kepatuhan K4 | lanjut T-016 pembekuan fitur & audit akhir
 2026-11-16 | agen AI | T-016 pembekuan fitur & audit akhir | Fitur dibekukan (R2), 27/27 tes lulus, lint bersih, build 148 kB, verifikasi URL Vercel 200 OK pada resolusi 1280, 768, 375 px | lanjut T-017 perapihan dokumentasi akhir
+2026-11-16 | agen AI | T-017 dokumentasi akhir | README (URL Vercel, arsitektur, panduan mulai), LESSONS (pelajaran CSS chain & K3), REVIEW (pemahaman author), TASKS & PROGRESS lengkap | Proyek PC Power Simulator 3D 100% selesai
