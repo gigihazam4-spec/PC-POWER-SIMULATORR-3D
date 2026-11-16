@@ -23,7 +23,7 @@ Tenggat aktual lebih pendek dari satu minggu penuh; perkiraan di atas adalah usu
 
 | ID | Judul | Fitur | Ukuran | Status | Branch | Bergantung pada | Kriteria selesai |
 |---|---|---|---|---|---|---|---|
-| T-001 | Setup proyek: Vite vanilla, ESLint, package-lock.json, tes contoh | setup | M | doing | feat/T-001-setup | - | `npm ci`, `npm run lint`, `npm test`, dan `npm run build` lulus lokal; `ci.yml` ada dan hasil CI di GitHub dibaca serta diperbaiki bila merah (bukan syarat merge); versi paket dicatat di PROGRESS (langkah di bawah tabel) |
+| T-001 | Setup proyek: Vite vanilla, ESLint, package-lock.json, tes contoh | setup | M | review | feat/T-001-setup | - | `npm ci`, `npm run lint`, `npm test`, dan `npm run build` lulus lokal; `ci.yml` ada dan hasil CI di GitHub dibaca serta diperbaiki bila merah (bukan syarat merge); versi paket dicatat di PROGRESS (langkah di bawah tabel) |
 | T-002 | Token CSS dan layout responsif kerangka (canvas dan panel) | F1 | S | todo | feat/T-002-layout | T-001 | Token dari DESIGN_SYSTEM dipakai; tampil tanpa gulir horizontal pada 1280, 768, dan 375 px (DevTools); lint bersih |
 | T-003 | Scene Three.js minimal: satu objek, loop render, penyesuaian ukuran | F1 | S | todo | feat/T-003-scene-minimal | T-001 | Objek tampil di canvas pada `npm run dev` tanpa galat di konsol dan ukuran mengikuti jendela; `npm run build` berhasil |
 | T-004 | Deploy dini ke Vercel dan periksa URL | F1, R1 | S | todo | chore/T-004-deploy-dini | T-002, T-003 | Repositori terhubung ke Vercel (Build Command `npm run build`, Output Directory `dist`; cek dasbor); URL produksi terbuka dan scene minimal muncul; URL dicatat di PROGRESS |
