@@ -1,0 +1,136 @@
+/* ============================================================
+   layout.css — Kerangka dua‑kolom responsif (canvas + panel)
+   T-002 · F1
+   Breakpoints dari docs/DESIGN_SYSTEM.md:
+     < 768 px   → satu kolom (canvas atas, panel bawah)
+     768–1279   → dua kolom, panel 320 px
+     ≥ 1280     → dua kolom, panel 380 px, konten maks 1280 px
+   ============================================================ */
+
+/* ---- Shell ---- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.app-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-header__title {
+  font-size: var(--text-subtitle);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+  line-height: var(--leading-subtitle);
+}
+
+/* ---- Main area ---- */
+.app-main {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;        /* mobile-first: stacked */
+  min-height: 0;                 /* allow flex children to shrink */
+  overflow: hidden;
+}
+
+/* ---- Canvas wrapper ---- */
+.canvas-wrapper {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.canvas-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Placeholder text shown before Three.js mounts */
+.canvas-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+}
+
+/* ---- Side panel ---- */
+.side-panel {
+  flex: 0 0 auto;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-4);
+  overflow-y: auto;
+  max-height: 40vh;              /* mobile: panel doesn't eat entire screen */
+}
+
+.side-panel__section-title {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.side-panel__body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
+
+/* ---- Tablet (≥ 768 px) ---- */
+@media (min-width: 768px) {
+  .app-shell {
+    padding: 0;
+  }
+
+  .app-header {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .app-main {
+    flex-direction: row;          /* side-by-side */
+  }
+
+  .canvas-wrapper {
+    flex: 1 1 0;
+  }
+
+  .side-panel {
+    flex: 0 0 var(--panel-width-md);
+    width: var(--panel-width-md);
+    max-height: none;             /* fill height */
+    border-top: none;
+    border-left: 1px solid var(--color-border);
+    padding: var(--space-4);
+  }
+}
+
+/* ---- Desktop (≥ 1280 px) ---- */
+@media (min-width: 1280px) {
+  .app-header {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .side-panel {
+    flex: 0 0 var(--panel-width-lg);
+    width: var(--panel-width-lg);
+    padding: var(--space-5);
+  }
+}
