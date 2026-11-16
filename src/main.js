@@ -7,9 +7,10 @@ import { createComponentInfoPanel } from './ui/component-info.js'
 import { createSimulationControls } from './ui/simulation-controls.js'
 import { createInstructionCard } from './ui/instruction-card.js'
 import { createStepList } from './ui/step-list.js'
+import { createWarningBanner } from './ui/warning-banner.js'
 
 // PC Power Simulator 3D — entry point
-// T-010: Petunjuk interaktif, penandaan interactionTarget, dan daftar tahapan (K3)
+// T-013: Peringatan kesalahan prosedur dengan arahan perbaikan (F5)
 
 function mountApp() {
   const app = document.getElementById('app')
@@ -53,6 +54,9 @@ function mountApp() {
   // Panel info komponen (klik 3D model)
   const infoPanel = createComponentInfoPanel()
 
+  // Banner Peringatan Kesalahan Prosedur (F5)
+  const warningBanner = createWarningBanner()
+
   // Kartu Petunjuk Interaktif (F3)
   const instructionCard = createInstructionCard({
     onBackToActiveStep: () => {
@@ -88,6 +92,7 @@ function mountApp() {
   // Komponen kontrol simulasi (Mulai, Ulang, Progress Bar, Selesai)
   const simControls = createSimulationControls({
     onStart: () => {
+      warningBanner.clearWarning()
       const state = simManager.start()
       simControls.updateState(state)
       stepList.updateState(state, null)
@@ -97,6 +102,7 @@ function mountApp() {
       }
     },
     onReset: () => {
+      warningBanner.clearWarning()
       const state = simManager.reset()
       simControls.updateState(state)
       stepList.updateState(state, null)
@@ -111,6 +117,7 @@ function mountApp() {
   // Assemble panel (urutan teratur dari atas ke bawah)
   panel.appendChild(sectionTitle)
   panel.appendChild(simControls.element)
+  panel.appendChild(warningBanner.element)
   panel.appendChild(instructionCard.element)
   panel.appendChild(infoPanel.element)
   panel.appendChild(stepList.element)
@@ -138,6 +145,7 @@ function mountApp() {
         const activeStep = currentState.currentStep
         // Cocokkan apakah komponen yang diklik merupakan interactionTarget tahap aktif
         if (activeStep.interactionTarget === targetName) {
+          warningBanner.clearWarning()
           const result = simManager.handleAction(activeStep.expectedAction)
           simControls.updateState(result.state)
           stepList.updateState(result.state, null)
@@ -150,14 +158,10 @@ function mountApp() {
             sceneApi.highlightComponent(result.state.currentStep.interactionTarget)
           }
         } else {
-          // Aksi salah (K2)
+          // Aksi salah (K2 & F5)
           const result = simManager.handleAction('action_salah')
           if (result.warning) {
-            // Berikan feedback peringatan tanpa mengubah tahap aktif
-            instructionCard.setInstruction({
-              ...activeStep,
-              instruction: `⚠ ${result.warning.message} ${result.warning.correction}`,
-            }, false, activeStep.order)
+            warningBanner.showWarning(result.warning)
           }
         }
       }

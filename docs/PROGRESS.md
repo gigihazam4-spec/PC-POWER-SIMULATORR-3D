@@ -28,6 +28,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-010: Petunjuk interaktif & daftar tahapan (K3) | PR #13 (merged) | Daftar 10 tahapan (src/ui/step-list.js), kartu petunjuk dinamis (src/ui/instruction-card.js), penandaan interactionTarget di scene 3D, kepatuhan mutlak aturan K3 |
 | 2026-11-16 | T-011: Verifikasi deploy Vercel & pengukuran FPS/gzip | PR #14 (merged) | URL https://pc-power-simulatorr-3-d.vercel.app/ aktif 200 OK; simulasi F1-F3 berjalan; FPS stabil ~60 FPS (target ≥ 30); ukuran bundle dist gzip 143.86 kB (jauh di bawah batas 5 MB) |
 | 2026-11-16 | T-012: Penjelasan fungsi setiap tahapan | PR #15 (merged) | Penjelasan fungsi (description) setiap langkah dalam Bahasa Indonesia, integrasi di instruction-card, 2 unit tests baru di tests/step-description.test.js lulus |
+| 2026-11-16 | T-013: Peringatan kesalahan prosedur & arahan perbaikan (F5) | PR #16 (in review) | Banner peringatan khusus (src/ui/warning-banner.js & src/styles/warning.css), menampilkan warningMessage & correction sesuai tahap aktif, 3 unit tests baru di tests/procedure-warning.test.js lulus |
 
 ## In Progress
 
@@ -62,3 +63,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-010 petunjuk interaktif & daftar tahapan | Komponen daftar tahapan 1-10 (step-list.js), kartu petunjuk aktif (instruction-card.js), penyorotan interactionTarget 3D, tes kepatuhan K3 lulus | lanjut T-011 verifikasi deploy & pengukuran FPS/gzip
 2026-11-16 | agen AI | T-011 verifikasi deploy & metrik | Verifikasi URL https://pc-power-simulatorr-3-d.vercel.app/, pengukuran gzip dist 143.86 kB (0.14 MB << 5 MB), FPS ~60 FPS | lanjut T-012 penjelasan fungsi setiap tahapan
 2026-11-16 | agen AI | T-012 penjelasan fungsi tahapan | Bagian penjelasan fungsi edukatif tahapan F4 di UI dan tes validasi description Bahasa Indonesia tanpa ubah state simulasi | lanjut T-013 peringatan kesalahan prosedur F5
+2026-11-16 | agen AI | T-013 peringatan kesalahan prosedur | Banner peringatan khusus F5 (warningMessage & correction), integrasi event aksi salah K2, 3 unit tests baru lulus | lanjut T-014 data & logika kuis F6

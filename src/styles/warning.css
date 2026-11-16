@@ -1,0 +1,80 @@
+/* ============================================================
+   warning-banner.css — Banner Peringatan Kesalahan Prosedur
+   T-013 · F5 · K2
+   ============================================================ */
+
+.warning-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid var(--color-danger);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+  animation: warningFadeIn var(--duration-normal) var(--easing);
+}
+
+@keyframes warningFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.warning-banner__icon {
+  font-size: 1.25rem;
+  color: var(--color-danger);
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.warning-banner__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.warning-banner__title {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-bold);
+  color: var(--color-danger);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.warning-banner__message {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+.warning-banner__correction {
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-focus);
+}
+
+.warning-banner__close {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: var(--space-1);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  transition: color var(--duration-fast) var(--easing);
+}
+
+.warning-banner__close:hover {
+  color: var(--color-danger);
+}
