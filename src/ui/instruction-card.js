@@ -88,17 +88,27 @@ export function createInstructionCard(options = {}) {
   targetRow.appendChild(targetLabel)
   targetRow.appendChild(targetBadge)
 
-  // Penjelasan detail langkah (description)
+  // Penjelasan fungsi detail langkah (F4 - Function Description)
+  const descSection = document.createElement('div')
+  descSection.className = 'instruction-card__desc-section'
+
+  const descLabel = document.createElement('span')
+  descLabel.className = 'instruction-card__desc-label'
+  descLabel.textContent = 'Penjelasan Fungsi Tahapan (F4):'
+
   const descText = document.createElement('p')
   descText.className = 'instruction-card__desc'
   descText.textContent = ''
+
+  descSection.appendChild(descLabel)
+  descSection.appendChild(descText)
 
   container.appendChild(header)
   container.appendChild(previewBanner)
   container.appendChild(title)
   container.appendChild(actionBox)
   container.appendChild(targetRow)
-  container.appendChild(descText)
+  container.appendChild(descSection)
 
   // Peta nama target ke teks bahasa Indonesia yang ramah pemula
   const targetDisplayNames = {
