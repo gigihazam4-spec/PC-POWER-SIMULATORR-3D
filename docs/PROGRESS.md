@@ -26,7 +26,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-008: Logika state simulasi murni | PR #10 (merged) | Modul src/logic/simulation-state.js tanpa DOM/Three.js, implementasi K2 (aksi salah tidak memajukan tahap) & K4 (memori sesi murni), 7 unit tests di tests/simulation-state.test.js lulus |
 | 2026-11-16 | T-009: UI simulasi & kontrol progres | PR #12 (merged) | Komponen src/ui/simulation-controls.js, tombol mulai & ulang, bilah progres & penanda selesai, integrasi klik komponen maju langkah |
 | 2026-11-16 | T-010: Petunjuk interaktif & daftar tahapan (K3) | PR #13 (merged) | Daftar 10 tahapan (src/ui/step-list.js), kartu petunjuk dinamis (src/ui/instruction-card.js), penandaan interactionTarget di scene 3D, kepatuhan mutlak aturan K3 |
-| 2026-11-16 | T-011: Verifikasi deploy Vercel & pengukuran FPS/gzip | PR #14 (in review) | URL https://pc-power-simulatorr-3-d.vercel.app/ aktif 200 OK; simulasi F1-F3 berjalan; FPS stabil ~60 FPS (target ≥ 30); ukuran bundle dist gzip 143.86 kB (jauh di bawah batas 5 MB) |
+| 2026-11-16 | T-011: Verifikasi deploy Vercel & pengukuran FPS/gzip | PR #14 (merged) | URL https://pc-power-simulatorr-3-d.vercel.app/ aktif 200 OK; simulasi F1-F3 berjalan; FPS stabil ~60 FPS (target ≥ 30); ukuran bundle dist gzip 143.86 kB (jauh di bawah batas 5 MB) |
 
 ## In Progress
 
