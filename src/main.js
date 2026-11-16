@@ -5,9 +5,11 @@ import { createSimulationManager } from './logic/simulation-state.js'
 import { initComputerScene } from './scene/computer-scene.js'
 import { createComponentInfoPanel } from './ui/component-info.js'
 import { createSimulationControls } from './ui/simulation-controls.js'
+import { createInstructionCard } from './ui/instruction-card.js'
+import { createStepList } from './ui/step-list.js'
 
 // PC Power Simulator 3D — entry point
-// T-009: UI Mulai, Lanjut, Ulang, Indikator Progres, dan Penanda Selesai
+// T-010: Petunjuk interaktif, penandaan interactionTarget, dan daftar tahapan (K3)
 
 function mountApp() {
   const app = document.getElementById('app')
@@ -43,33 +45,62 @@ function mountApp() {
 
   const sectionTitle = document.createElement('h2')
   sectionTitle.className = 'side-panel__section-title'
-  sectionTitle.textContent = 'Petunjuk & Kontrol'
+  sectionTitle.textContent = 'Panduan & Kontrol Simulasi'
 
-  const instructionBody = document.createElement('p')
-  instructionBody.className = 'side-panel__body'
-  instructionBody.textContent = 'Klik tombol "Mulai Simulasi" di bawah untuk memulai panduan langkah demi langkah menyalakan komputer.'
-
-  // Panel info komponen
-  const infoPanel = createComponentInfoPanel()
-
-  // Komponen kontrol simulasi (Mulai, Ulang, Progress Bar, Selesai)
+  // Variabel API Scene Three.js
   let sceneApi = null
 
+  // Panel info komponen (klik 3D model)
+  const infoPanel = createComponentInfoPanel()
+
+  // Kartu Petunjuk Interaktif (F3)
+  const instructionCard = createInstructionCard({
+    onBackToActiveStep: () => {
+      const state = simManager.getState()
+      instructionCard.setInstruction(
+        state.currentStep,
+        false,
+        state.currentStep ? state.currentStep.order : 1
+      )
+      stepList.updateState(state, null)
+      if (sceneApi && state.isRunning && state.currentStep) {
+        sceneApi.highlightComponent(state.currentStep.interactionTarget)
+      }
+    },
+  })
+
+  // Daftar Tahapan 1–10 (K3)
+  const stepList = createStepList({
+    steps: simulationProcedure.steps,
+    onSelectStep: (selectedStep) => {
+      // Aturan K3: memilih tahapan HANYA menampilkan informasinya, tidak mengubah tahap aktif atau progres
+      const state = simManager.getState()
+      const isPreview = !state.isRunning || (state.currentStep && state.currentStep.id !== selectedStep.id)
+      instructionCard.setInstruction(
+        selectedStep,
+        isPreview,
+        state.currentStep ? state.currentStep.order : 1
+      )
+      stepList.updateState(state, selectedStep.id)
+    },
+  })
+
+  // Komponen kontrol simulasi (Mulai, Ulang, Progress Bar, Selesai)
   const simControls = createSimulationControls({
     onStart: () => {
       const state = simManager.start()
       simControls.updateState(state)
-      if (state.currentStep) {
-        instructionBody.textContent = state.currentStep.instruction
-        if (sceneApi) {
-          sceneApi.highlightComponent(state.currentStep.interactionTarget)
-        }
+      stepList.updateState(state, null)
+      instructionCard.setInstruction(state.currentStep, false, state.currentStep.order)
+      if (sceneApi && state.currentStep) {
+        sceneApi.highlightComponent(state.currentStep.interactionTarget)
       }
     },
     onReset: () => {
       const state = simManager.reset()
       simControls.updateState(state)
-      instructionBody.textContent = 'Simulasi telah diulang. Klik "Mulai Simulasi" untuk memulai kembali.'
+      stepList.updateState(state, null)
+      instructionCard.setInstruction(null, false)
       if (sceneApi) {
         sceneApi.highlightComponent(null)
       }
@@ -77,11 +108,12 @@ function mountApp() {
     },
   })
 
-  // Assemble panel
+  // Assemble panel (urutan teratur dari atas ke bawah)
   panel.appendChild(sectionTitle)
   panel.appendChild(simControls.element)
-  panel.appendChild(instructionBody)
+  panel.appendChild(instructionCard.element)
   panel.appendChild(infoPanel.element)
+  panel.appendChild(stepList.element)
 
   // Assemble layout
   main.appendChild(canvasWrapper)
@@ -108,19 +140,24 @@ function mountApp() {
         if (activeStep.interactionTarget === targetName) {
           const result = simManager.handleAction(activeStep.expectedAction)
           simControls.updateState(result.state)
+          stepList.updateState(result.state, null)
 
           if (result.state.isCompleted) {
-            instructionBody.textContent = 'Prosedur simulasi selesai dengan sukses!'
+            instructionCard.setInstruction(null, false)
             sceneApi.highlightComponent(null)
           } else if (result.state.currentStep) {
-            instructionBody.textContent = result.state.currentStep.instruction
+            instructionCard.setInstruction(result.state.currentStep, false, result.state.currentStep.order)
             sceneApi.highlightComponent(result.state.currentStep.interactionTarget)
           }
         } else {
           // Aksi salah (K2)
           const result = simManager.handleAction('action_salah')
           if (result.warning) {
-            instructionBody.textContent = `⚠ ${result.warning.message} ${result.warning.correction}`
+            // Berikan feedback peringatan tanpa mengubah tahap aktif
+            instructionCard.setInstruction({
+              ...activeStep,
+              instruction: `⚠ ${result.warning.message} ${result.warning.correction}`,
+            }, false, activeStep.order)
           }
         }
       }
@@ -128,7 +165,10 @@ function mountApp() {
   })
 
   // Sinkronisasi state awal UI
-  simControls.updateState(simManager.getState())
+  const initialState = simManager.getState()
+  simControls.updateState(initialState)
+  stepList.updateState(initialState, null)
+  instructionCard.setInstruction(null, false)
 }
 
 mountApp()

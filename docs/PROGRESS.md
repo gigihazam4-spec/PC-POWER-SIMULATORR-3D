@@ -25,6 +25,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-007: Data prosedur & tahapan simulasi | PR #9 (merged) | 10 tahapan dalam 5 fase lengkap di src/data/steps.js; 6 unit tests validasi data kelengkapan alur di tests/steps.test.js lulus |
 | 2026-11-16 | T-008: Logika state simulasi murni | PR #10 (merged) | Modul src/logic/simulation-state.js tanpa DOM/Three.js, implementasi K2 (aksi salah tidak memajukan tahap) & K4 (memori sesi murni), 7 unit tests di tests/simulation-state.test.js lulus |
 | 2026-11-16 | T-009: UI simulasi & kontrol progres | PR #12 (merged) | Komponen src/ui/simulation-controls.js, tombol mulai & ulang, bilah progres & penanda selesai, integrasi klik komponen maju langkah |
+| 2026-11-16 | T-010: Petunjuk interaktif & daftar tahapan (K3) | PR #13 (in review) | Daftar 10 tahapan (src/ui/step-list.js), kartu petunjuk dinamis (src/ui/instruction-card.js), penandaan interactionTarget di scene 3D, kepatuhan mutlak aturan K3 |
 
 ## In Progress
 
@@ -56,3 +57,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-007 data tahapan simulasi | Data prosedur dan 10 SimulationStep dalam 5 fase (pemeriksaan, power on, booting, OS, shutdown), 6 tes validasi rantai nextStepId & interactionTarget | lanjut T-008 logika state simulasi murni
 2026-11-16 | agen AI | T-008 logika state simulasi | createSimulationManager (state idle/running/completed, K2 aksi salah tahan tahap, K4 simpan di memori), 7 unit tests lulus | lanjut T-009 UI simulasi (mulai, lanjut, ulang, penanda selesai)
 2026-11-16 | agen AI | T-009 UI simulasi & progres | UI tombol Mulai, Ulangi, ProgressBar %, indikator tahap aktif & fase, kartu selesai, integrasi raycast 3D maju langkah | lanjut T-010 petunjuk interaktif & daftar tahapan
+2026-11-16 | agen AI | T-010 petunjuk interaktif & daftar tahapan | Komponen daftar tahapan 1-10 (step-list.js), kartu petunjuk aktif (instruction-card.js), penyorotan interactionTarget 3D, tes kepatuhan K3 lulus | lanjut T-011 verifikasi deploy & pengukuran FPS/gzip
