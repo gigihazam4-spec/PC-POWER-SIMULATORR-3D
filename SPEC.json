@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "app_name": "PC Power Simulator 3D",
+    "slug": "pc-power-simulator-3d",
+    "one_liner": "Simulator 3D interaktif berbasis web untuk mengajarkan pemula menyalakan dan mematikan komputer desktop dengan benar.",
+    "platform": "web",
+    "level": "dasar",
+    "language": "id",
+    "ai_tools": [
+      "chat-only"
+    ],
+    "team_size": 1,
+    "duration_weeks": 1,
+    "delegated_questions": [],
+    "secondary_platforms": [],
+    "starting_point": "new",
+    "created_date": "2026-11-15",
+    "assistant_proposed": [
+      "meta.one_liner",
+      "metrics[0].target",
+      "metrics[1].target",
+      "metrics[2].target",
+      "metrics[3].target",
+      "features[0].acceptance[1]",
+      "features[0].acceptance[2]",
+      "features[0].acceptance[3]",
+      "features[0].acceptance[4]",
+      "features[1].acceptance[1]",
+      "features[1].acceptance[2]",
+      "features[1].acceptance[3]",
+      "features[2].acceptance[1]",
+      "features[2].acceptance[2]",
+      "features[3].acceptance[1]",
+      "features[4].acceptance[1]",
+      "features[5].description",
+      "features[5].acceptance[0]",
+      "features[5].acceptance[1]",
+      "features[5].acceptance[2]",
+      "design.primary_color",
+      "design.font",
+      "stack.keywords",
+      "stack.ecosystems",
+      "stack.commands",
+      "risks",
+      "student_reflection.risk_controls",
+      "security.secrets_handling"
+    ]
+  },
+  "problem": {
+    "statement": "Pengguna pemula belum memahami urutan dan alasan di balik prosedur menyalakan dan mematikan komputer desktop. Akibatnya mereka bisa mematikan komputer secara paksa tanpa shutdown yang benar sehingga berisiko kehilangan data yang belum disimpan atau mengalami gangguan sistem, serta merasa bingung dan kurang percaya diri saat memakai komputer.",
+    "who": "Pelajar, mahasiswa, dan masyarakat umum, khususnya pengguna pemula yang belum memahami tata cara menyalakan dan mematikan komputer desktop dengan benar.",
+    "current_alternative": "Tutorial YouTube, artikel atau modul panduan, bertanya kepada teman atau orang yang lebih berpengalaman, atau mencoba mengoperasikan komputer sendiri tanpa panduan yang terstruktur."
+  },
+  "goals": [
+    "Menghasilkan media pembelajaran berbasis website dengan visualisasi komputer desktop 3D yang interaktif menggunakan Three.js.",
+    "Membantu pengguna pemula memahami dan mempelajari urutan menyalakan serta mematikan komputer desktop dengan benar melalui simulasi langkah demi langkah."
+  ],
+  "non_goals": [
+    "Tidak menyediakan login atau registrasi akun.",
+    "Tidak menggunakan database pengguna atau sistem CRUD.",
+    "Tidak menyediakan pembayaran atau transaksi.",
+    "Tidak mengendalikan komputer fisik sungguhan.",
+    "Tidak menjalankan simulasi sistem operasi Windows secara penuh; hanya visualisasi proses booting dan tampilan sistem operasi secara sederhana.",
+    "Tidak menyediakan diagnosis kerusakan hardware atau simulasi perbaikan komputer tingkat lanjut.",
+    "Tidak membuat aplikasi Android atau iOS terpisah."
+  ],
+  "users": [
+    {
+      "persona": "Pengguna pemula: pelajar/mahasiswa dan masyarakat umum (persona rumusan mahasiswa, bukan hasil wawancara dengan orang sungguhan)",
+      "need": "Memahami urutan langkah dan alasan di balik prosedur menyalakan dan mematikan komputer dengan benar.",
+      "quote": "Saya masih sering bingung ketika harus menyalakan dan mematikan komputer dengan benar. Selama ini saya hanya mengikuti apa yang diajarkan teman atau melihat tutorial, tetapi belum memahami urutan langkah dan alasan di balik setiap prosedur."
+    }
+  ],
+  "user_conditions": [
+    "Perangkat murah atau spesifikasi rendah",
+    "Antarmuka Bahasa Indonesia",
+    "Responsif pada desktop, tablet, dan smartphone"
+  ],
+  "features": [
+    {
+      "id": "F1",
+      "name": "Model 3D komputer desktop interaktif",
+      "description": "Model komputer desktop ditampilkan dalam 3D dengan Three.js; pengguna dapat memutar, memperbesar, memperkecil, dan mengeklik komponennya. Versi awal dibangun dari geometri bawaan Three.js (R3).",
+      "priority": "must",
+      "acceptance": [
+        "Jika pengguna memutar, memperbesar, memperkecil, atau mengeklik komponen komputer, model 3D merespons interaksi tersebut.",
+        "Jika pengguna mengeklik sebuah komponen (mis. tombol power atau monitor), komponen itu tersorot dan nama serta fungsinya dari data PCComponent tampil di panel info.",
+        "Jika halaman dibuka pada lebar layar 1280, 768, dan 375 px, canvas 3D dan kontrol utama tetap terlihat dan dapat dipakai tanpa gulir horizontal.",
+        "Jika model diputar terus-menerus selama 10 detik pada perangkat uji berspesifikasi rendah, tampilan mencapai sasaran 30 FPS atau lebih; angka ini sasaran pengujian, bukan jaminan di semua perangkat.",
+        "Jika npm run build dijalankan, ukuran bundel produksi terkompresi gzip tidak melebihi 5 MB dan ukuran aktualnya dicatat di docs/PROGRESS.md."
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "Simulasi langkah demi langkah",
+      "description": "Simulasi memandu pengguna melalui lima fase berurutan: pemeriksaan perangkat, menyalakan komputer, proses booting, masuk ke sistem operasi (tampilan sederhana, bukan sistem operasi sungguhan), dan prosedur shutdown yang benar.",
+      "priority": "must",
+      "acceptance": [
+        "Jika pengguna menekan tombol mulai dan melanjutkan tahapan simulasi, sistem menampilkan urutan pemeriksaan perangkat, menyalakan komputer, proses booting, masuk ke sistem operasi, hingga prosedur shutdown yang benar.",
+        "Jika pengguna melakukan tindakan yang bukan expectedAction pada tahap aktif, simulasi tidak maju dan tetap berada di tahap yang sama.",
+        "Jika pengguna menyelesaikan tahap shutdown terakhir, simulasi menampilkan penanda selesai dan tombol untuk mengulang dari awal.",
+        "Jika halaman dimuat ulang, simulasi kembali ke tahap awal; progres hanya disimpan di memori sesi, tidak di localStorage, database, atau server."
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "Petunjuk interaktif di setiap langkah",
+      "description": "Setiap tahap simulasi menampilkan petunjuk tindakan yang harus dilakukan pengguna.",
+      "priority": "must",
+      "acceptance": [
+        "Jika pengguna memilih atau menjalankan suatu tahapan, sistem menampilkan petunjuk tindakan yang harus dilakukan pada tahapan tersebut.",
+        "Jika tahap aktif berganti, teks petunjuk (instruction) berganti sesuai data SimulationStep tahap baru dan komponen sasaran tindakan (interactionTarget) ditandai di model 3D.",
+        "Jika pengguna memilih tahapan dari daftar, hanya petunjuk tahapan itu yang tampil; tahap aktif dan progres simulasi tidak berubah."
+      ]
+    },
+    {
+      "id": "F4",
+      "name": "Penjelasan fungsi setiap tahapan",
+      "description": "Setiap tahapan dilengkapi penjelasan tujuan dan fungsinya dalam bahasa yang mudah dipahami pemula.",
+      "priority": "should",
+      "acceptance": [
+        "Jika pengguna memilih salah satu tahapan, sistem menampilkan penjelasan tujuan dan fungsi tahapan tersebut dengan bahasa yang mudah dipahami.",
+        "Jika pengguna memilih tahapan dari daftar, hanya penjelasan tahapan itu yang tampil; tahap aktif dan progres simulasi tidak berubah."
+      ]
+    },
+    {
+      "id": "F5",
+      "name": "Pemberitahuan kesalahan prosedur",
+      "description": "Aplikasi memberi peringatan, penjelasan, dan arahan perbaikan ketika pengguna melakukan tindakan di luar urutan prosedur.",
+      "priority": "should",
+      "acceptance": [
+        "Jika pengguna melakukan tindakan yang tidak sesuai dengan urutan simulasi, sistem menampilkan peringatan, menjelaskan kesalahan, dan memberikan arahan untuk memperbaikinya.",
+        "Jika peringatan tampil, teksnya diambil dari warningMessage dan correction milik tahap aktif, dan tahap aktif tetap sama sampai pengguna melakukan tindakan yang benar."
+      ]
+    },
+    {
+      "id": "F6",
+      "name": "Kuis singkat",
+      "description": "Setelah menyelesaikan simulasi, pengguna dapat menjawab kuis singkat tentang prosedur menyalakan dan mematikan komputer.",
+      "priority": "could",
+      "acceptance": [
+        "Jika pengguna menyelesaikan simulasi dan membuka kuis, aplikasi menampilkan pertanyaan dari data QuizQuestion satu per satu beserta pilihan jawaban.",
+        "Jika pengguna menjawab semua pertanyaan, aplikasi menampilkan skor akhir dan, untuk setiap soal, jawaban yang benar beserta penjelasannya (explanation).",
+        "Jika kuis selesai atau halaman dimuat ulang, skor tidak tersimpan; skor hanya ada di memori sesi."
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Interaksi model 3D",
+      "target": "Semua butir uji F1 lulus (usulan)",
+      "how_measured": "Menguji apakah model komputer dapat diputar, diperbesar, diperkecil, dan merespons klik pengguna."
+    },
+    {
+      "name": "Keberhasilan simulasi",
+      "target": "Simulasi dapat diselesaikan dari pemeriksaan perangkat sampai shutdown yang benar tanpa galat (usulan)",
+      "how_measured": "Menguji apakah pengguna dapat menyelesaikan tahapan menyalakan dan mematikan komputer sesuai urutan yang benar."
+    },
+    {
+      "name": "Pemahaman pengguna",
+      "target": "Kuis dapat diselesaikan dan skor akhir tampil; hanya diukur bila F6 dibuat (usulan)",
+      "how_measured": "Memberikan kuis singkat mengenai prosedur menyalakan dan mematikan komputer setelah pengguna menyelesaikan simulasi."
+    },
+    {
+      "name": "Respons kesalahan",
+      "target": "Setiap tindakan di luar urutan memunculkan peringatan; hanya diukur bila F5 selesai (usulan)",
+      "how_measured": "Menguji apakah sistem menampilkan pemberitahuan ketika pengguna melakukan tindakan yang tidak sesuai dengan urutan simulasi."
+    }
+  ],
+  "stack": {
+    "frontend": "HTML5, CSS3, dan JavaScript tanpa framework UI; Three.js untuk rendering 3D; Vite sebagai build tool",
+    "backend": "Tidak ada",
+    "database": "Tidak ada (data simulasi disimpan di berkas JavaScript atau JSON di dalam proyek)",
+    "auth": "Tidak ada",
+    "hosting": "Vercel",
+    "testing": "Gabungan: pengujian otomatis dengan node --test (logika tahapan, validasi urutan langkah, data kuis) dan pengujian manual di browser (model 3D, rotasi dan zoom, interaksi komponen, tombol, peringatan, responsivitas)",
+    "keywords": [
+      "Three.js",
+      "JavaScript",
+      "Vite",
+      "HTML5",
+      "CSS3",
+      "Vercel"
+    ],
+    "extra": [],
+    "source": "mixed",
+    "custom_reason": "Saya memilih Three.js sebagai teknologi utama karena proyek ini berfokus pada penerapan pemodelan dan simulasi 3D interaktif berbasis website. Untuk teknologi pendukung, saya mengutamakan stack yang sederhana, mudah dipelajari, ringan, dan realistis untuk diselesaikan dalam waktu pengerjaan yang tersedia.",
+    "custom_layers": [
+      "bahasa",
+      "library 3D",
+      "frontend/UI",
+      "build tool",
+      "backend",
+      "database",
+      "autentikasi",
+      "hosting",
+      "pengujian"
+    ],
+    "ecosystems": [
+      "node"
+    ],
+    "commands": {
+      "install": "npm ci",
+      "dev": "npm run dev",
+      "lint": "npm run lint",
+      "typecheck": "",
+      "test": "npm test",
+      "build": "npm run build",
+      "ci_setup": ""
+    },
+    "versions": []
+  },
+  "data": {
+    "entities": [
+      {
+        "name": "SimulationProcedure",
+        "fields": [
+          "id",
+          "title",
+          "description",
+          "category",
+          "steps"
+        ]
+      },
+      {
+        "name": "SimulationStep",
+        "fields": [
+          "id",
+          "order",
+          "title",
+          "phase",
+          "description",
+          "instruction",
+          "expectedAction",
+          "warningMessage",
+          "correction",
+          "nextStepId"
+        ]
+      },
+      {
+        "name": "PCComponent",
+        "fields": [
+          "id",
+          "name",
+          "description",
+          "function",
+          "interactionTarget"
+        ]
+      },
+      {
+        "name": "QuizQuestion",
+        "fields": [
+          "id",
+          "question",
+          "options",
+          "correctAnswer",
+          "explanation"
+        ]
+      }
+    ],
+    "personal_data": "none",
+    "sensitive_notes": "Tidak ada data pribadi yang diproses; tanpa login, registrasi, atau penyimpanan data pengguna."
+  },
+  "security": {
+    "roles": [
+      "Pengunjung (satu peran)"
+    ],
+    "auth_method": "Tidak ada (tanpa login)",
+    "secrets_handling": "Tidak ada rahasia karena proyek tanpa backend, API, atau layanan pihak ketiga; bila kelak ada, simpan di .env lokal yang tidak di-commit dan di pengelola rahasia hosting"
+  },
+  "ai_in_app": {
+    "mode": "none",
+    "purpose": "Tidak ada AI di dalam aplikasi; AI hanya alat bantu mahasiswa selama perencanaan dan pengembangan."
+  },
+  "design": {
+    "tone": "Modern, minimalis, rapi, dan ramah bagi pemula; bernuansa teknologi komputer tetapi tidak terlalu rumit. Latar navy gelap dan abu-abu gelap, hijau untuk status berhasil, merah atau oranye untuk peringatan. Mode gelap sebagai satu-satunya tampilan, tanpa pengalih tema.",
+    "primary_color": "#3B82F6",
+    "font": "Font sistem, tanpa berkas font eksternal",
+    "dark_mode": true
+  },
+  "platform_specific": {
+    "web": {
+      "rendering": "static",
+      "i18n": false,
+      "seo": false
+    }
+  },
+  "risks": [
+    "Tenggat sangat dekat sehingga fitur should (F4, F5) dan kuis (F6) mungkin tidak selesai.",
+    "Kinerja rendering 3D buruk pada perangkat berspesifikasi rendah.",
+    "Deployment ke Vercel bermasalah sehingga URL tidak dapat diakses saat dikumpulkan.",
+    "Perintah npm test gagal di lingkungan bersih bila berkas pengujian belum dibuat."
+  ],
+  "student_reflection": {
+    "biggest_risk": "Risiko terbesar proyek ini adalah keterbatasan waktu pengerjaan karena tenggat pengumpulan sangat dekat. Saya khawatir website belum selesai, fitur simulasi 3D belum berjalan dengan baik, atau deployment ke Vercel mengalami kendala sehingga URL tidak bisa diakses saat dikumpulkan.",
+    "why_this_project": "Ingin memahami cara kerja PC secara interaktif.",
+    "risk_controls": [
+      "R1: Deploy ke Vercel sejak kerangka Vite dan scene Three.js minimal berjalan; setelah setiap fitur must selesai, deploy ulang dan buka URL yang sama → halaman tampil tanpa galat dan scene 3D muncul.",
+      "R2: Pembekuan fitur pada Senin, 16 November 2026 pukul 20.00 WIB → setelah itu hanya perbaikan bug, pengujian build, dan pemeriksaan URL Vercel; versi yang dikumpulkan adalah versi terakhir yang lulus npm run build dan terbuka normal di URL Vercel.",
+      "R3: Model komputer awal dibuat dari geometri bawaan Three.js tanpa berkas model eksternal → pengguna tetap dapat memutar, memperbesar, dan mengeklik komponen (F1); detail tambahan dikerjakan setelah F1 sampai F3 berjalan di URL Vercel."
+    ]
+  }
+}
