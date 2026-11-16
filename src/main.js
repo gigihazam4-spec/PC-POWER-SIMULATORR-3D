@@ -1,7 +1,9 @@
 import './style.css'
+import { initMinimalScene } from './scene/minimal-scene.js'
 
 // PC Power Simulator 3D — entry point
 // T-002: mount kerangka layout (canvas + panel)
+// T-003: inisialisasi scene Three.js minimal di canvas-wrapper
 
 /**
  * Bangun kerangka HTML aplikasi secara programatis.
@@ -32,11 +34,6 @@ function mountApp() {
   const canvasWrapper = document.createElement('div')
   canvasWrapper.className = 'canvas-wrapper'
 
-  const placeholder = document.createElement('div')
-  placeholder.className = 'canvas-placeholder'
-  placeholder.textContent = 'Memuat model 3D\u2026'
-  canvasWrapper.appendChild(placeholder)
-
   // Side panel
   const panel = document.createElement('aside')
   panel.className = 'side-panel'
@@ -47,7 +44,7 @@ function mountApp() {
 
   const body = document.createElement('p')
   body.className = 'side-panel__body'
-  body.textContent = 'Klik tombol Mulai untuk memulai simulasi.'
+  body.textContent = 'Scene 3D siap. Klik tombol Mulai untuk memulai simulasi.'
 
   panel.appendChild(sectionTitle)
   panel.appendChild(body)
@@ -59,6 +56,9 @@ function mountApp() {
   shell.appendChild(header)
   shell.appendChild(main)
   app.appendChild(shell)
+
+  // Inisialisasi scene 3D
+  initMinimalScene(canvasWrapper)
 }
 
 mountApp()
