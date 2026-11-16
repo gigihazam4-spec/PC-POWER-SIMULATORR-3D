@@ -21,7 +21,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-003: Scene Three.js minimal | PR #5 (merged) | Satu kubus geometri bawaan Three.js, pencahayaan, loop render animasi, dan ResizeObserver responsif |
 | 2026-11-16 | T-004: Deploy dini ke Vercel | PR #6 (merged) | vercel.json ditambahkan untuk auto-build dan konfigurasi output dist di Vercel |
 | 2026-11-16 | T-005: Model komputer 3D rotasi & zoom | PR #7 (merged) | Model meja, monitor, casing tower, tombol power, LED, kabel daya, keyboard, mouse; kontrol OrbitControls (rotasi & zoom) |
-| 2026-11-16 | T-006: Klik komponen, sorotan & panel info | - | Data PCComponent di src/data/components.js, raycasting klik, highlight kilau aksen biru, kartu info di side panel, dan unit test validasi data |
+| 2026-11-16 | T-006: Klik komponen, sorotan & panel info | PR #8 (merged) | Data PCComponent di src/data/components.js, raycasting klik, highlight kilau aksen biru, kartu info di side panel, dan unit test validasi data |
 
 ## In Progress
 
