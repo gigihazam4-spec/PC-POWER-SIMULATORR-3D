@@ -1,14 +1,20 @@
 import './style.css'
 import { pcComponents } from './data/components.js'
+import { simulationProcedure } from './data/steps.js'
+import { createSimulationManager } from './logic/simulation-state.js'
 import { initComputerScene } from './scene/computer-scene.js'
 import { createComponentInfoPanel } from './ui/component-info.js'
+import { createSimulationControls } from './ui/simulation-controls.js'
 
 // PC Power Simulator 3D — entry point
-// T-006: Klik komponen dengan sorotan dan panel informasi
+// T-009: UI Mulai, Lanjut, Ulang, Indikator Progres, dan Penanda Selesai
 
 function mountApp() {
   const app = document.getElementById('app')
   if (!app) return
+
+  // Inisialisasi manajer logika simulasi
+  const simManager = createSimulationManager(simulationProcedure.steps)
 
   // --- Shell ---
   const shell = document.createElement('div')
@@ -37,20 +43,47 @@ function mountApp() {
 
   const sectionTitle = document.createElement('h2')
   sectionTitle.className = 'side-panel__section-title'
-  sectionTitle.textContent = 'Petunjuk Interaksi'
+  sectionTitle.textContent = 'Petunjuk & Kontrol'
 
   const instructionBody = document.createElement('p')
   instructionBody.className = 'side-panel__body'
-  instructionBody.textContent = 'Putar dan perbesar model komputer. Klik salah satu komponen (kabel, tombol power, monitor, casing, keyboard, mouse) untuk melihat fungsinya.'
+  instructionBody.textContent = 'Klik tombol "Mulai Simulasi" di bawah untuk memulai panduan langkah demi langkah menyalakan komputer.'
 
-  // Panel info komponen dinamis
+  // Panel info komponen
   const infoPanel = createComponentInfoPanel()
 
+  // Komponen kontrol simulasi (Mulai, Ulang, Progress Bar, Selesai)
+  let sceneApi = null
+
+  const simControls = createSimulationControls({
+    onStart: () => {
+      const state = simManager.start()
+      simControls.updateState(state)
+      if (state.currentStep) {
+        instructionBody.textContent = state.currentStep.instruction
+        if (sceneApi) {
+          sceneApi.highlightComponent(state.currentStep.interactionTarget)
+        }
+      }
+    },
+    onReset: () => {
+      const state = simManager.reset()
+      simControls.updateState(state)
+      instructionBody.textContent = 'Simulasi telah diulang. Klik "Mulai Simulasi" untuk memulai kembali.'
+      if (sceneApi) {
+        sceneApi.highlightComponent(null)
+      }
+      infoPanel.setComponent(null)
+    },
+  })
+
+  // Assemble panel
   panel.appendChild(sectionTitle)
+  panel.appendChild(simControls.element)
   panel.appendChild(instructionBody)
   panel.appendChild(infoPanel.element)
 
-  // Assemble
+  // Assemble layout
   main.appendChild(canvasWrapper)
   main.appendChild(panel)
 
@@ -58,15 +91,44 @@ function mountApp() {
   shell.appendChild(main)
   app.appendChild(shell)
 
-  // Inisialisasi scene 3D dengan event klik komponen
-  initComputerScene(canvasWrapper, {
+  // Inisialisasi scene 3D dengan hook interaksi simulasi
+  sceneApi = initComputerScene(canvasWrapper, {
     onComponentClick: (targetName) => {
+      // 1. Tampilkan kartu info komponen
       const foundComponent = pcComponents.find((c) => c.interactionTarget === targetName)
       if (foundComponent) {
         infoPanel.setComponent(foundComponent)
       }
+
+      // 2. Jika simulasi sedang berjalan, proses aksi ke SimulationManager
+      const currentState = simManager.getState()
+      if (currentState.isRunning && currentState.currentStep) {
+        const activeStep = currentState.currentStep
+        // Cocokkan apakah komponen yang diklik merupakan interactionTarget tahap aktif
+        if (activeStep.interactionTarget === targetName) {
+          const result = simManager.handleAction(activeStep.expectedAction)
+          simControls.updateState(result.state)
+
+          if (result.state.isCompleted) {
+            instructionBody.textContent = 'Prosedur simulasi selesai dengan sukses!'
+            sceneApi.highlightComponent(null)
+          } else if (result.state.currentStep) {
+            instructionBody.textContent = result.state.currentStep.instruction
+            sceneApi.highlightComponent(result.state.currentStep.interactionTarget)
+          }
+        } else {
+          // Aksi salah (K2)
+          const result = simManager.handleAction('action_salah')
+          if (result.warning) {
+            instructionBody.textContent = `⚠ ${result.warning.message} ${result.warning.correction}`
+          }
+        }
+      }
     },
   })
+
+  // Sinkronisasi state awal UI
+  simControls.updateState(simManager.getState())
 }
 
 mountApp()
