@@ -8,16 +8,20 @@ import { createSimulationControls } from './ui/simulation-controls.js'
 import { createInstructionCard } from './ui/instruction-card.js'
 import { createStepList } from './ui/step-list.js'
 import { createWarningBanner } from './ui/warning-banner.js'
+import { quizQuestions } from './data/quiz.js'
+import { createQuizManager } from './logic/quiz-state.js'
+import { createQuizUI } from './ui/quiz-ui.js'
 
 // PC Power Simulator 3D — entry point
-// T-013: Peringatan kesalahan prosedur dengan arahan perbaikan (F5)
+// T-015: UI kuis pemahaman dan skor akhir (F6)
 
 function mountApp() {
   const app = document.getElementById('app')
   if (!app) return
 
-  // Inisialisasi manajer logika simulasi
+  // Inisialisasi manajer logika simulasi dan kuis
   const simManager = createSimulationManager(simulationProcedure.steps)
+  const quizManager = createQuizManager(quizQuestions)
 
   // --- Shell ---
   const shell = document.createElement('div')
@@ -57,6 +61,11 @@ function mountApp() {
   // Banner Peringatan Kesalahan Prosedur (F5)
   const warningBanner = createWarningBanner()
 
+  // Komponen UI Kuis Pemahaman (F6)
+  const quizUI = createQuizUI({
+    quizManager,
+  })
+
   // Kartu Petunjuk Interaktif (F3)
   const instructionCard = createInstructionCard({
     onBackToActiveStep: () => {
@@ -93,6 +102,7 @@ function mountApp() {
   const simControls = createSimulationControls({
     onStart: () => {
       warningBanner.clearWarning()
+      quizUI.hide()
       const state = simManager.start()
       simControls.updateState(state)
       stepList.updateState(state, null)
@@ -103,6 +113,7 @@ function mountApp() {
     },
     onReset: () => {
       warningBanner.clearWarning()
+      quizUI.hide()
       const state = simManager.reset()
       simControls.updateState(state)
       stepList.updateState(state, null)
@@ -119,6 +130,7 @@ function mountApp() {
   panel.appendChild(simControls.element)
   panel.appendChild(warningBanner.element)
   panel.appendChild(instructionCard.element)
+  panel.appendChild(quizUI.element)
   panel.appendChild(infoPanel.element)
   panel.appendChild(stepList.element)
 
@@ -153,6 +165,8 @@ function mountApp() {
           if (result.state.isCompleted) {
             instructionCard.setInstruction(null, false)
             sceneApi.highlightComponent(null)
+            // Otomatis tawarkan kuis evaluasi pemahaman (F6)
+            quizUI.startQuiz()
           } else if (result.state.currentStep) {
             instructionCard.setInstruction(result.state.currentStep, false, result.state.currentStep.order)
             sceneApi.highlightComponent(result.state.currentStep.interactionTarget)

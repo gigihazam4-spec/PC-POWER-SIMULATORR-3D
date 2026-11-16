@@ -30,6 +30,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-012: Penjelasan fungsi setiap tahapan | PR #15 (merged) | Penjelasan fungsi (description) setiap langkah dalam Bahasa Indonesia, integrasi di instruction-card, 2 unit tests baru di tests/step-description.test.js lulus |
 | 2026-11-16 | T-013: Peringatan kesalahan prosedur & arahan perbaikan (F5) | PR #16 (merged) | Banner peringatan khusus (src/ui/warning-banner.js & src/styles/warning.css), menampilkan warningMessage & correction sesuai tahap aktif, 3 unit tests baru di tests/procedure-warning.test.js lulus |
 | 2026-11-16 | T-014: Data dan logika kuis (F6) | PR #17 (merged) | Data QuizQuestion di src/data/quiz.js, createQuizManager di src/logic/quiz-state.js murni di memori (K4), 3 unit tests di tests/quiz.test.js lulus |
+| 2026-11-16 | T-015: UI kuis pemahaman dan skor akhir (F6) | PR #18 (in review) | Komponen UI kuis interaktif (src/ui/quiz-ui.js & src/styles/quiz.css), feedback jawaban langsung & penjelasan edukatif, skor persentase akhir & reset kuis (K4) |
 
 ## In Progress
 
@@ -66,3 +67,4 @@ Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan
 2026-11-16 | agen AI | T-012 penjelasan fungsi tahapan | Bagian penjelasan fungsi edukatif tahapan F4 di UI dan tes validasi description Bahasa Indonesia tanpa ubah state simulasi | lanjut T-013 peringatan kesalahan prosedur F5
 2026-11-16 | agen AI | T-013 peringatan kesalahan prosedur | Banner peringatan khusus F5 (warningMessage & correction), integrasi event aksi salah K2, 3 unit tests baru lulus | lanjut T-014 data & logika kuis F6
 2026-11-16 | agen AI | T-014 data dan logika kuis | Data QuizQuestion (src/data/quiz.js) dan modul state murni kuis (src/logic/quiz-state.js), skor akurat, aturan K4, 3 tes lulus | lanjut T-015 UI kuis dan skor akhir
+2026-11-16 | agen AI | T-015 UI kuis dan skor akhir | Komponen UI interaktif kuis (quiz-ui.js), pilihan ganda dinamis, kartu feedback penjelasan, visual skor akhir persentase, kepatuhan K4 | lanjut T-016 pembekuan fitur & audit akhir
