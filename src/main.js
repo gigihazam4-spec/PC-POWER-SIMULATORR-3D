@@ -1,8 +1,10 @@
 import './style.css'
+import { pcComponents } from './data/components.js'
 import { initComputerScene } from './scene/computer-scene.js'
+import { createComponentInfoPanel } from './ui/component-info.js'
 
 // PC Power Simulator 3D — entry point
-// T-005: Model komputer dari geometri bawaan dengan rotasi & zoom
+// T-006: Klik komponen dengan sorotan dan panel informasi
 
 function mountApp() {
   const app = document.getElementById('app')
@@ -37,12 +39,16 @@ function mountApp() {
   sectionTitle.className = 'side-panel__section-title'
   sectionTitle.textContent = 'Petunjuk Interaksi'
 
-  const body = document.createElement('p')
-  body.className = 'side-panel__body'
-  body.textContent = 'Gunakan drag mouse / sentuhan untuk memutar model komputer. Scroll roda mouse atau pinch untuk memperbesar / memperkecil (zoom).'
+  const instructionBody = document.createElement('p')
+  instructionBody.className = 'side-panel__body'
+  instructionBody.textContent = 'Putar dan perbesar model komputer. Klik salah satu komponen (kabel, tombol power, monitor, casing, keyboard, mouse) untuk melihat fungsinya.'
+
+  // Panel info komponen dinamis
+  const infoPanel = createComponentInfoPanel()
 
   panel.appendChild(sectionTitle)
-  panel.appendChild(body)
+  panel.appendChild(instructionBody)
+  panel.appendChild(infoPanel.element)
 
   // Assemble
   main.appendChild(canvasWrapper)
@@ -52,8 +58,15 @@ function mountApp() {
   shell.appendChild(main)
   app.appendChild(shell)
 
-  // Inisialisasi scene 3D dengan model komputer desktop dan kontrol Orbit
-  initComputerScene(canvasWrapper)
+  // Inisialisasi scene 3D dengan event klik komponen
+  initComputerScene(canvasWrapper, {
+    onComponentClick: (targetName) => {
+      const foundComponent = pcComponents.find((c) => c.interactionTarget === targetName)
+      if (foundComponent) {
+        infoPanel.setComponent(foundComponent)
+      }
+    },
+  })
 }
 
 mountApp()
