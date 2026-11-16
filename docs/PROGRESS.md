@@ -30,7 +30,7 @@ Tenggat: Senin, 16 November 2026, pukul 23.00 WIB berupa URL Vercel yang dapat d
 | 2026-11-16 | T-012: Penjelasan fungsi setiap tahapan | PR #15 (merged) | Penjelasan fungsi (description) setiap langkah dalam Bahasa Indonesia, integrasi di instruction-card, 2 unit tests baru di tests/step-description.test.js lulus |
 | 2026-11-16 | T-013: Peringatan kesalahan prosedur & arahan perbaikan (F5) | PR #16 (merged) | Banner peringatan khusus (src/ui/warning-banner.js & src/styles/warning.css), menampilkan warningMessage & correction sesuai tahap aktif, 3 unit tests baru di tests/procedure-warning.test.js lulus |
 | 2026-11-16 | T-014: Data dan logika kuis (F6) | PR #17 (merged) | Data QuizQuestion di src/data/quiz.js, createQuizManager di src/logic/quiz-state.js murni di memori (K4), 3 unit tests di tests/quiz.test.js lulus |
-| 2026-11-16 | T-015: UI kuis pemahaman dan skor akhir (F6) | PR #18 (in review) | Komponen UI kuis interaktif (src/ui/quiz-ui.js & src/styles/quiz.css), feedback jawaban langsung & penjelasan edukatif, skor persentase akhir & reset kuis (K4) |
+| 2026-11-16 | T-015: UI kuis pemahaman dan skor akhir (F6) | PR #18 (merged) | Komponen UI kuis interaktif (src/ui/quiz-ui.js & src/styles/quiz.css), feedback jawaban langsung & penjelasan edukatif, skor persentase akhir & reset kuis (K4) |
 
 ## In Progress
 
