@@ -1,14 +1,9 @@
 import './style.css'
-import { initMinimalScene } from './scene/minimal-scene.js'
+import { initComputerScene } from './scene/computer-scene.js'
 
 // PC Power Simulator 3D — entry point
-// T-002: mount kerangka layout (canvas + panel)
-// T-003: inisialisasi scene Three.js minimal di canvas-wrapper
+// T-005: Model komputer dari geometri bawaan dengan rotasi & zoom
 
-/**
- * Bangun kerangka HTML aplikasi secara programatis.
- * Menggunakan textContent untuk teks statis (bukan innerHTML).
- */
 function mountApp() {
   const app = document.getElementById('app')
   if (!app) return
@@ -40,11 +35,11 @@ function mountApp() {
 
   const sectionTitle = document.createElement('h2')
   sectionTitle.className = 'side-panel__section-title'
-  sectionTitle.textContent = 'Petunjuk'
+  sectionTitle.textContent = 'Petunjuk Interaksi'
 
   const body = document.createElement('p')
   body.className = 'side-panel__body'
-  body.textContent = 'Scene 3D siap. Klik tombol Mulai untuk memulai simulasi.'
+  body.textContent = 'Gunakan drag mouse / sentuhan untuk memutar model komputer. Scroll roda mouse atau pinch untuk memperbesar / memperkecil (zoom).'
 
   panel.appendChild(sectionTitle)
   panel.appendChild(body)
@@ -57,8 +52,8 @@ function mountApp() {
   shell.appendChild(main)
   app.appendChild(shell)
 
-  // Inisialisasi scene 3D
-  initMinimalScene(canvasWrapper)
+  // Inisialisasi scene 3D dengan model komputer desktop dan kontrol Orbit
+  initComputerScene(canvasWrapper)
 }
 
 mountApp()
